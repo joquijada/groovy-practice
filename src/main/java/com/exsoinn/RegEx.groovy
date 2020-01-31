@@ -1,7 +1,7 @@
 import java.util.regex.*
 
 
- String str =  "123456.0"
+String str =  "123456.0"
 //String str =  "ABCD"
 println str.replaceAll("(\\d+)\\.0", "\$1")
 

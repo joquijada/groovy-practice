@@ -4,3 +4,7 @@ def str = [269754.0,"PHFOY","SONIF LAB MIA","USA","MARRIOTT"].each {
 }.join("|")
 
 println str
+
+def obj1 = new Expando(a: 1, b: 2)
+def obj2 = new Expando(a: 1, b: 2)
+def someList = [], 

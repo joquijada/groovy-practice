@@ -64,8 +64,9 @@ switch (pattA) {
  * Using String.eachMatch(Pattern)
  */
 def url = 'https://www.showtime.com/site/image-bin/images/1033823_0_0/1033823_0_0_99_264x198.jpg'
-url.eachMatch(~/(\d+)_(\d+)_(\d+)_(\d{2})_(\d+)x(\d+)\.(\w+)/) {
-  println "Found $it"
+def titlePattern = /(\d+)_(\d+)_(\d+)_(\d{2})_(\d+)x(\d+)\.(\w+)/
+url.eachMatch(~titlePattern) {
+  println "Using 'String.eachMatch' found: $it"
 }
 
 /*
@@ -73,12 +74,13 @@ url.eachMatch(~/(\d+)_(\d+)_(\d+)_(\d{2})_(\d+)x(\d+)\.(\w+)/) {
  */
 def fullRegionMatcher = url ==~ /(\d+_)/
 fullRegionMatcher.each() {
-  println "Full region matcher found $it"
+  println "Full region matcher found? $it"
 }
 
 def findMatcher = url =~ /(\d+)_/
 if (findMatcher) {
   println "found something"
+  println "Matcher type is ${findMatcher.class.getName()}"
 } else {
   println "did not find anything"
 }
@@ -96,4 +98,5 @@ def subjectMatcher = subject ==~ subjectPattern
 if (subjectMatcher) {
   println "Matched subject"
   println "Matcher type is ${subjectMatcher.class.getName()}"
+  assert subjectMatcher instanceof java.util.regex.Matcher
 }

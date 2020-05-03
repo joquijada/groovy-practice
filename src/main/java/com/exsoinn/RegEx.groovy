@@ -98,5 +98,5 @@ def subjectMatcher = subject ==~ subjectPattern
 if (subjectMatcher) {
   println "Matched subject"
   println "Matcher type is ${subjectMatcher.class.getName()}"
-  assert subjectMatcher instanceof java.util.regex.Matcher
+  assert !(subjectMatcher instanceof java.util.regex.Matcher), "${subjectMatcher.class.getName()} is not of type ${java.util.regex.Matcher.class.getName()}"
 }

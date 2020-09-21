@@ -30,3 +30,11 @@ listOfMapsOne.each { Map one ->
 println cumulativeMap
 println clearedMap
 
+/*
+ * Is it a closure or what???
+ */
+def whatIsIt = {
+  encode {-> println "screw you"}
+}
+println whatIsIt.class.getName()
+ 

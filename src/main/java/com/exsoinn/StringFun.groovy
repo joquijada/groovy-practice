@@ -50,3 +50,15 @@ def leadSpace = /(?m)^\s+/
 println "\nRegEx $leadSpace: ${Pattern.compile(leadSpace).matcher(multiline).replaceAll('')}"
 
 println "\nstripMargin('|'): ${multiline.stripMargin('|')}"
+
+
+/*
+ * Recipe for building array of X repetitions of a string. Can also use
+ * Collections.nCopies(), http://docs.groovy-lang.org/latest/html/documentation/working-with-collections.html#_duplicating_elements
+ */
+def myJson = '{"blah": "foo"}'
+def res = ((myJson + ', ') * 5)[0..-3] // exclude trailing spaces and comma
+res = res.split(',').collect { it }
+
+println "Array of X JSON is $res"
+println "Array of X JSON using JDK API is ${Collections.nCopies(5, myJson)}"

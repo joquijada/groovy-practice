@@ -4,8 +4,16 @@ import java.util.regex.Pattern
 // Note: File named as StringFun.groovy as opposed to String.groovy  because if I declare variables of type String, Groovy will think 
 //       I'm declaring String of the type that this script file defines (see [REF|GIA|p#176, first bullet point], and not java.lang.String,
 //       forcing me to use the FQN of the java.lang.String type to distinguish it.
-def myStr = $/Foo bar $$blah golf/$
+// Forward slash doesn't need escaping in dollar-slashy string, and last character can be a backslash
+def myBastard = 'bastard'
+//def myStr = $/Foo bar/ $myBastard ${'\\'}u005B $$blah golf\/$
+def myStr = $/Foo bar/ $ $myBastard \u005Cu005B $$blah golf\/$
+println myStr
 
+myStr = /${'$'}foo/
+println myStr
+
+myStr = $/Foo bar/ $ $myBastard \u005Cu005B $$blah golf\/$
 println myStr
 
 assert !"", 'Empty strings are always false in Groovy'
@@ -62,3 +70,17 @@ res = res.split(',').collect { it }
 
 println "Array of X JSON is $res"
 println "Array of X JSON using JDK API is ${Collections.nCopies(5, myJson)}"
+
+// Do I need to escape backlash in single/double quoted strings that are regex'? Let's see...Ah, yes I do. The top one 
+// fails to match anything because the compiler consumes the `\`'s.
+def myRegEx = ~'\b.+\b'
+//def myRegEx = ~/\b.+\b/
+("word1 word2" =~ myRegEx).each {
+  println "Match found is $it"
+}
+
+myRegEx = ~'.+'
+("word3 word4" =~ myRegEx).each {
+  println "Match found is $it"
+}
+

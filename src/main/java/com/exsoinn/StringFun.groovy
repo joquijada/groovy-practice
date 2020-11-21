@@ -13,8 +13,8 @@ println myStr
 myStr = /${'$'}foo/
 println myStr
 
-myStr = $/Foo bar/ $ $myBastard \u005Cu005B $$blah golf\/$
-println myStr
+//myStr = "Foo bar/ $ $myBastard \u005Cu005B $$blah golf\/"
+//println myStr
 
 assert !"", 'Empty strings are always false in Groovy'
 

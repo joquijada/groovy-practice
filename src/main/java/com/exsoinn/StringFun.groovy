@@ -84,3 +84,4 @@ myRegEx = ~'.+'
   println "Match found is $it"
 }
 
+println "hi\nfyck you"

@@ -34,3 +34,8 @@ println result
 private List<Integer> integerListGenerator() {
   [0, 1]
 }
+
+
+[[2, 3],[4, 5, 6]].eachCombination { println "Found $it" }
+
+[2, 3, 4, 5, 6].eachCombination { println "Found $it" }

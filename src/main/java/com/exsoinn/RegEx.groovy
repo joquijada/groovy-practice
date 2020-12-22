@@ -114,8 +114,14 @@ println jsonStr.split('","')
  * Looh ahead/behind, positive and negative
  */
 def negLa = /((?!portaltv).)*$/
+
+/*
+ * The below negative look aheads are saying "I will match any string without
+ * a preceeting '/titles/<some-num>' and '/titles/series/' substring respectively
+ */
 def notTitlesApi = ~/(.(?!titles\/\d+))*/
 def notTitlesSeriesApi = ~/((?!\/titles\/series\/).)*/
+
 def missingConversion = ~/((?<!convertToSegamiImageUrlFormat).)*(\$\{URL_PREFIX|image-bin).*/
 def wordBound = ~/\b\w+\bi/
 def myVar = null
@@ -129,6 +135,14 @@ assert '/tve/json/titles/3406304/' ==~ notTitlesSeriesApi
 //assert '"image-bin/images/0_0_0/0_0_0_98_382x215.jpg".toString()' ==~  missingConversion
 assert !('convertToSegamiImageUrlFormat("image-bin/images/0_0_0/0_0_0_98_382x215.jpg".toString()' ==~  missingConversion)
 assert !('foo i' =~ wordBound)
+
+// Match a string that begins with 'q' where 'q' is not followed by a 'u'
+assert 'qiuttttu' ==~ 'q(?!u).+'
+
+// Does the same as above but since we're search in any section of the input sequence it succeeds
+assert 'qiuttttu' =~ 'q(?!u)'
+
+
 
 /*
  * Subtleity: the /.../.toString() gets evaluated before applying the `~`. The first statement below creates two distinct pattern objects,

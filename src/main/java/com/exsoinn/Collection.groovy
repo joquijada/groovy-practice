@@ -39,3 +39,11 @@ private List<Integer> integerListGenerator() {
 [[2, 3],[4, 5, 6]].eachCombination { println "Found $it" }
 
 [2, 3, 4, 5, 6].eachCombination { println "Found $it" }
+
+
+/*
+ * collectMany() with index???
+ */
+[[1, 2], [3, 4]].withIndex().each {item, idx ->
+  println "$item $idx"
+}

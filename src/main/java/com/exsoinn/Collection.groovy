@@ -54,5 +54,7 @@ private List<Integer> integerListGenerator() {
  * a list [REF|https://docs.groovy-lang.org/latest/html/documentation/core-operators.html|"It is equivalent to calling the action on each item and collecting the result into a list"]
  * Below ouputs `['[1, 2]', '[3, 4]', '[5, 6]']`, notice how a array was generated of the result of invoking `toString()` on each of the inner arrays
  */
+println "\nGoofing around with the '*.' operator"
 def ary = [ [1, 2], [3, 4], [5, 6] ]
-ary*.toString()
+println (ary*.flatten().toString())
+println (ary.flatten())

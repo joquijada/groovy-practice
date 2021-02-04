@@ -8,10 +8,10 @@ def propertyMissing2(String name) {
   return result
 }
 
-//println IIOI + IOI
+println IIOI + IOI
 
 /*
- * Does the JVM use 2'a complement?
+ * Does the JVM use 2'a complement? Yes
  */
 def five = 5
 def negFive = -5

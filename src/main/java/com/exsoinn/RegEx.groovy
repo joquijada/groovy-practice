@@ -173,3 +173,33 @@ url = 'https://www.showtime.com/site/image-bin/images/12345_2_6789/12345_2_6789_
 (url =~ shoDotComUrl).each {
   println "Found match in URL: $it"
 }
+
+/*
+ * More fun with match groupings
+ */
+print "\n\n\n"
+String fightImageUrl = 'https://segami.showtime.com/segami/46/0/3440434/02-05-06-07-08/180x270/image.jpg'
+Pattern franchiseIdPattern = ~$//(46|93|684|841|860|5826)//$
+
+// but if pattern fails to match, getAt(0) throws IndexOutofBoundsException, because I guess Matcher is never NULL, even when using the '?.' notation. Does this
+// mean that '?.' is only for checking strictly NULL nor not (I.e. a 'false' Boolean object is considered non-NUL and therefore passes the test?). See the test farther below
+//println ((fightImageUrl =~ franchiseIdPattern)?.getAt(0)?.getAt(1))
+
+// Therefore try the iterative approach. Below will NOT throw any exception if pattern fails to match
+(fightImageUrl =~ franchiseIdPattern).each {
+  println it[1]
+}
+println (fightImageUrl =~ franchiseIdPattern) ?: 'Did not find crap'
+if (fightImageUrl =~ franchiseIdPattern) {
+  print 'Found it!!!'
+}
+
+// Test whether '?.' operator works only for checking strictly NULL or if boolean == false is considered too. And the answer is, checks strictly boolean only
+assert Boolean.FALSE?.hashCode() > 0, 'Boolean.FALSE evaluated to false by `?.` operator'
+assert Integer.valueOf(0)?.hashCode() > 0, 'Boolean.FALSE evaluated to false by `?.` operator'
+print "\n"
+// Even the GDK findResult() method does strict NULL check, not a weak falsy/truthy type check
+def foundRes = [1, 2, 3].findResult {
+   Boolean.FALSE
+}
+println foundRes

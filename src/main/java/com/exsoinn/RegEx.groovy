@@ -191,14 +191,14 @@ Pattern franchiseIdPattern = ~$//(46|93|684|841|860|5826)//$
 }
 println (fightImageUrl =~ franchiseIdPattern) ?: 'Did not find crap'
 if (fightImageUrl =~ franchiseIdPattern) {
-  print 'Found it!!!'
+  println 'Found it!!!'
 }
 
-// Test whether '?.' operator works only for checking strictly NULL or if boolean == false is considered too. And the answer is, checks strictly boolean only
-assert Boolean.FALSE?.hashCode() > 0, 'Boolean.FALSE evaluated to false by `?.` operator'
-assert Integer.valueOf(0)?.hashCode() > 0, 'Boolean.FALSE evaluated to false by `?.` operator'
+// Test whether '?.' operator works by doing a truthy-type check, or if it does a strictly NULL check
+assert Boolean.FALSE?.hashCode() > 0, 'Boolean.FALSE evaluated to false by `?.` operator - this will never happen'
+assert Integer.valueOf(0)?.hashCode() == 0, '"0" evaluated to false by `?.` operator - this will never happen either for same reason as above'
 print "\n"
-// Even the GDK findResult() method does strict NULL check, not a weak falsy/truthy type check
+// Even the GDK findResult() method does strict NULL check, not a weak falsy/truthy type check ala ECMAScript aka JavaScript
 def foundRes = [1, 2, 3].findResult {
    Boolean.FALSE
 }

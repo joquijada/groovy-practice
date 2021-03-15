@@ -58,3 +58,7 @@ println "\nGoofing around with the '*.' operator"
 def ary = [ [1, 2], [3, 4], [5, 6] ]
 println (ary*.flatten().toString())
 println (ary.flatten())
+
+// To simulate how legacy cache stores images, and how to get a set of URL's
+def images = [1234: ['a', 'b', 'c'], 5678: ['d', 'e', 'f']]
+images.values()*.first()

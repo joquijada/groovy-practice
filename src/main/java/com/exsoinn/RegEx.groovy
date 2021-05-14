@@ -203,3 +203,6 @@ def foundRes = [1, 2, 3].findResult {
    Boolean.FALSE
 }
 println foundRes
+
+// I don't need capturing groups for something simple like this (04/27/2021)
+println (('SON0274042' =~ /[a-zA-Z]+/)[0])

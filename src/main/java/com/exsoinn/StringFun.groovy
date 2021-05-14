@@ -38,11 +38,11 @@ myStrings*.each {
 }
 
 // Strip indent
-def multiline = '''    
+def multiline = """
            Every series. Entire seasons. All-new episodes.
            |Hit movies, documentaries, sports & more.
            |Commercial-free access to live and on demand TV.
-           |Watch anywhere - on your TV, tablet, phone or computer.'''
+           |Watch anywhere - on your TV, tablet, phone or computer."""
 println "Original: $multiline"
 println "\nstripIndent: ${multiline.stripIndent()}"
 println "\ntrim: ${multiline.trim()}"
@@ -58,6 +58,11 @@ def leadSpace = /(?m)^\s+/
 println "\nRegEx $leadSpace: ${Pattern.compile(leadSpace).matcher(multiline).replaceAll('')}"
 
 println "\nstripMargin('|'): ${multiline.stripMargin('|')}"
+
+// Strings can be indexed as arrays to access individual characters. Can even use ranges to access a sequence of characters!
+def myStr2 = 'I am a string'
+println "Accessing first charcter of '$myStr2': ${myStr2[0]}"
+println "Accessing characters 3 through 5 of '$myStr2': ${myStr2[3..5]}"
 
 
 /*
@@ -83,5 +88,3 @@ myRegEx = ~'.+'
 ("word3 word4" =~ myRegEx).each {
   println "Match found is $it"
 }
-
-println "hi\nfyck you"

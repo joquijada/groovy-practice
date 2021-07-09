@@ -70,6 +70,22 @@ url.eachMatch(~titlePattern) {
 }
 
 /*
+ * Matcher.findAll() in action!!!
+ */
+println ""
+def findAllPatt = ~/\d+_/
+res = (url =~ findAllPatt).findAll()
+println "Matcher.findAll() result on pattern '$findAllPatt' is $res"
+
+// Notice how the introduction of a capturing group changes result to a multi-dimensional array (an array of arrays), unlike previous one
+// which is just a one-dimensional array of scalars
+findAllPatt = ~/(\d+)_/
+res = (url =~ findAllPatt).findAll()
+println "Matcher.findAll() result on pattern '$findAllPatt' is $res"
+println ""
+
+
+/*
  * Matcher (==~) versus Finder (=~)
  */
  // ==~ returns a boolean, it internally calls Matcher.matches()
@@ -206,3 +222,14 @@ println foundRes
 
 // I don't need capturing groups for something simple like this (04/27/2021)
 println (('SON0274042' =~ /[a-zA-Z]+/)[0])
+
+// Fucking shit
+def routeRegEx = ~$/^(?<=//)\s*\$$app->(get|post|delete|put)\('([^']+)'/$
+def crap = "//\$app->get('/api/title/endplay/title/:titleId/at/:at'="
+println routeRegEx
+def m = crap =~ routeRegEx
+if (m) {
+  println "Matched $routeRegEx on $crap: ${m[0]}"
+} else {
+  println "RegEx $routeRegEx did not match $crap"
+}

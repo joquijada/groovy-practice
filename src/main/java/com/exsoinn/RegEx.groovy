@@ -132,8 +132,8 @@ println jsonStr.split('","')
 def negLa = /((?!portaltv).)*$/
 
 /*
- * The below negative look aheads are saying "I will match any string without
- * a preceeting '/titles/<some-num>' and '/titles/series/' substring respectively
+ * The below negative lookahead's are saying "I will match any string without
+ * a trailing '/titles/<some-num>' and '/titles/series/' substring respectively
  */
 def notTitlesApi = ~/(.(?!titles\/\d+))*/
 def notTitlesSeriesApi = ~/((?!\/titles\/series\/).)*/

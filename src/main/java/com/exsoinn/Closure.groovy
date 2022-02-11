@@ -37,4 +37,17 @@ def whatIsIt = {
   encode {-> println "screw you"}
 }
 println whatIsIt.class.getName()
- 
+
+
+/*
+ * Do SAM closure type coercion for abstract classes really work?
+ */
+abstract class MyClass {
+  abstract void foo(Integer i)
+  void foo(byte[] b, int a, int c) {
+    foo(b[a] as int)
+  }
+}
+
+def mc = { Integer num -> print num } as MyClass
+mc.foo([1, 2, 3, 4] as byte[], 0, 10)

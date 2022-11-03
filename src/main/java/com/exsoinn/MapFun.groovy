@@ -1,4 +1,12 @@
-import javafx.util.Pair
+// import javafx.util.Pair
+
+
+def myList = ['a', 'b', 'c']
+myList.withIndex().find { e, idx -> 
+  println "$e ==> $idx"
+  true
+}
+
 
 def crap = [key: 'jussy']
 
@@ -21,8 +29,8 @@ def myPrintMap(Map inMap) {
 def listOfMaps = [[key1: 'jussy1'], [key2: 'jussy2']]
 println "listOfMaps is $listOfMaps, ${listOfMaps.class.getName()}"
 
-def pair = ['key3', 'jussy3'] as Pair
-println pair
+// def pair = ['key3', 'jussy3'] as Pair
+// println pair
 
 //def pair2 = ('key3'): 'jussy3' as Pair
 

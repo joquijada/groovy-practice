@@ -1,5 +1,9 @@
 import java.util.regex.*
 
+String doubleSpace = 'abcd  efgh'
+doubleSpace.eachMatch(~/\b\w+\b/) {
+  println "doubleSpace match: $it"
+}
 
 String str =  "123456.0"
 //String str =  "ABCD"

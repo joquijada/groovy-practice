@@ -245,3 +245,10 @@ if (m) {
 } else {
   println "RegEx $routeRegEx did not match $crap"
 }
+
+def htmlTxt = $/<p>I'm a paragraph</p>/$
+println $/JMQ: Cleansed HTML is ${htmlTxt.replaceAll('<.*?>', '')}/$
+
+// Confirm that slashy strings do not need to escape the backlash
+assert /\d/ == '\\d'
+assert "\$foo" == '$foo'

@@ -10,8 +10,11 @@ myList.withIndex().find { e, idx ->
 
 def crap = [key: 'jussy']
 
-println crap
+// Append an entry to Map
+crap << [key2: 'punt']
 
+
+println crap
 
 
 /*

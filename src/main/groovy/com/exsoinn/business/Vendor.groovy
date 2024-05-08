@@ -1,4 +1,4 @@
-package business
+package com.exsoinn.business
 
 class Vendor {
   String name, product

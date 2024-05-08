@@ -56963,7 +56963,7 @@ String convertToBinary(String input, String encoding)
       .encode(input)
       .array();  
     return IntStream.range(0, encoded_input.length)
-        .map(i -> encoded_input[i] as Integer)
+        .map({ i -> encoded_input[i] as Integer })
         .mapToObj(e -> Integer.toBinaryString(e ^ 255))
         .map(e -> String.format('%1$' + Byte.SIZE + "s", e).replace(" ", "0"))
         .collect(Collectors.joining(' '));

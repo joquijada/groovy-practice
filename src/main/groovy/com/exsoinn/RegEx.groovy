@@ -252,3 +252,22 @@ println $/JMQ: Cleansed HTML is ${htmlTxt.replaceAll('<.*?>', '')}/$
 // Confirm that slashy strings do not need to escape the backlash
 assert /\d/ == '\\d'
 assert "\$foo" == '$foo'
+
+
+/*
+ * Fun using the '\x` RegEx metacharacter, example of this in a P+ PR
+ * 
+ */
+// Below will iterate over every *non-ASCII* (characters 0 - 127 in the Unicode table) found
+// in the given string
+// https://stackoverflow.com/questions/2220366/get-unicode-value-of-a-character, the trick to include high order 0's by OR'ing with ` 0x10000`
+('ABCD1234ð' =~ /[^\x00-\x7F]/).each {
+  println """\
+    Non-ASCII found - 
+      Character is '$it'
+      Codepoint is '${(int) it.charAt(0)}'
+      Hex value is '0x${Integer.toHexString((int) it.charAt(0) | 0x10000).substring(1)}'
+    """.stripIndent()
+}
+//assert /\x7F/ ==~ hexRegEx
+//println "ð"

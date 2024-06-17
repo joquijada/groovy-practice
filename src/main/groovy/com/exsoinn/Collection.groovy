@@ -62,3 +62,19 @@ println (ary.flatten())
 // To simulate how legacy cache stores images, and how to get a set of URL's
 def images = [1234: ['a', 'b', 'c'], 5678: ['d', 'e', 'f']]
 images.values()*.first()
+
+// Exercise to validate (orderInfo.approximateItemSizeInBytes() + updates*.value.toString().getBytes('UTF-8').length) > DYNAMODB_MAX_ITEM_SIZE_IN_BYTES
+// line in Charcot fulfillment. Specifically, doesn't this produce an array of the lengths, in which I'm missing a sum() call at the end?
+def myStrs = ['one', 'two', 'three']
+println "Bytes length of each string is ${myStrs*.getBytes('UTF-8').length}"
+myStrs*.getBytes('UTF-8').length.sum()
+//0 + myStrs*.getBytes('UTF-8').length
+
+// Dows [].findResults return an empty list if all input items are null?
+println ([null].findResults {
+  it
+})
+
+println ([null, 1, 2, 3, 4, [6, 7, 8]].findResults {
+  it
+}.flatten())

@@ -120,7 +120,8 @@ findMatcher.each() {
 }
 
 
-// Can matches (==~) be use to capture groups??? Apparently not, because Matcher is of type Java Boolean
+// Can matches (==~) be use to capture groups??? Apparently not, because Matcher is of type Java Boolean, 
+// [REF|https://docs.groovy-lang.org/next/html/documentation/core-operators.html|"The match operator (==~) is a slight variation of the find operator, that does not return a Matcher but a boolean and requires a strict match of the input string"]
 def subject = "my test string"
 def subjectPattern = ~/m(.+)g/
 def subjectMatcher = subject ==~ subjectPattern

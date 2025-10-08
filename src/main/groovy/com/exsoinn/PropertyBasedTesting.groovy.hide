@@ -1,3 +1,5 @@
+package com.exsoinn
+
 @Grab('net.java.quickcheck:quickcheck:0.6')
 import static net.java.quickcheck.generator.PrimitiveGenerators.*
 import static java.lang.Math.round

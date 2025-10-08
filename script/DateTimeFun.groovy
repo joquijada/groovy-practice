@@ -1,4 +1,4 @@
-package com.exsoinn
+@Grab(group='joda-time', module='joda-time', version='2.14.0')
 
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -13,4 +13,4 @@ DateTimeFormatter fmt = DateTimeFormat.forPattern('E, d MMM, yyyy HH:mm:ssz')
 
 StringBuilder now = new StringBuilder()
 fmt.printTo(now, dt)
-println "Tody is ${now.toString()}"
+println "Right now is ${now.toString()}"
